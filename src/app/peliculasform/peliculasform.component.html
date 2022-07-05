@@ -1,0 +1,17 @@
+<div class="col-md-8 offset-md-2">
+    <div class="card">
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" name="nombre" [(ngModel)]="movie.titulo"  placeholder="Título" class="form-control" autofocus autocomplete="off" minlength="3" required="true">
+                    <span *ngIf="movie.titulo.length  < 2 " class="validar">*Ingresa un nombre para el título</span>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="puntuacion" [(ngModel)]="movie.puntuacion" placeholder="Puntuación" class="form-control" autocomplete="off" required="true" max="10" min="1">
+                    <span *ngIf="movie.puntuacion <1 || movie.puntuacion >10" class="validar">*La puntuación tiene que ser entre 1 y 10</span>
+                </div>
+                <button type="submit"  [disabled]="f.invalid"  class="btn btn-success btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
